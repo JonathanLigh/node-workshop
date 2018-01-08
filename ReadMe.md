@@ -18,7 +18,7 @@ Here are links to their documentation:
 * https://www.npmjs.com/package/knock-knock-jokes
 * https://www.npmjs.com/package/one-liner-joke
 
-Hint: `npm install --save flags` will install the 'flags' packages to your node_modules folder in your directory. the `--save` will add it to your package.json file which keeps track of your project dependencies.
+Hint: `npm install --save <package_name>` will install the `<package_name>` package to your `node_modules` folder in your directory. the `--save` is a flag will add it to your `package.json` file, which keeps track of your project dependencies.
 
 ## Step 2: Scaffolding the Workshop
 
@@ -59,22 +59,20 @@ Hint: Remember the difference between `require('./<some_package>');` and `requir
 ### Create a flag that controls whether a knock-knock or a one-liner is printed. Let's handle this logic in `main.js`.
 
 #### In order to do this you'll need to:
-1. define what the string argument is called
+1. define what the string argument is called for your flag
 2. call `flags.parse` after initializing all of your flags
 3. add our new flag to your run command
 
-### Now go to our currently neglected utils.js and make:
-1. a function that makes a joke all uppercase leeters.
+### Now go to our currently neglected utils.js and export:
+1. a function that makes a joke all uppercase letters.
 2. a function that puts the whole joke in quotations.
-3. a function that invokes 3 different jokes (this can be an especially challenging one).
+3. a function that prints a joke `x` times.
 
-You can choose which functions get exported and which do not.
-
-### Finally, add three new flag arguments based on the utils functions you just added.
+### Finally, add three new flag arguments in `main.js` based on the utils functions you just added.
 1. add a Boolean flag that makes a joke uppercase.
 2. add a Boolean flag that puts a joke in quotes.
-3. add an Integer flag that prints the joke x times.
+3. add an Integer flag that prints the joke `x` times.
 
-A working project would be able to run all those commands simultaneously, e.g. `node main.js --jokeType='oneliner' --quotes --uppercase --x=4` would print 4 different one-liners in succession and each in quotes and uppercase (because these libraries print random jokes, it's possible that two jokes in a batch could be the same, dont worry about this case).
+A working project would be able to run all those flags simultaneously, e.g. `node main --jokeType='oneliner' --quotes --uppercase --x=4` would print the one-liner joke 4 times in succession and each in quotes and uppercase.
 
 If you feel confident with your implementation, call either of us over and we'll check your solution and give you another  challenge to consider.
