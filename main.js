@@ -1,5 +1,8 @@
 var kkjoke = require('./kkjokeHandler');
 var oljoke = require('./onelinerjokehandler');
+var utils = require('./utils');
+var flags = require('flags');
+
 
 if (process.argv[2] === 'knockknock') {
   console.log(kkjoke.create());
