@@ -1,0 +1,15 @@
+{
+  "name": "workshop-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "knock-knock-jokes": "^1.7.0",
+    "one-liner-joke": "^1.0.0"
+  }
+}
