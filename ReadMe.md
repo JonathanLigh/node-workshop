@@ -61,17 +61,19 @@ Hint: Remember the difference between `require('./<some_package>');` and `requir
 #### In order to do this you'll need to:
 1. define what the string argument is called for your flag
 2. call `flags.parse` after initializing all of your flags
-3. add our new flag to your run command
+3. add our new flag to your run command to test if it works
 
-### Now go to our currently neglected utils.js and export:
+### Now go to our currently neglected `utils.js` and export:
 1. a function that makes a joke all uppercase letters.
 2. a function that puts the whole joke in quotations.
 3. a function that prints a joke `x` times.
 
-### Finally, add three new flag arguments in `main.js` based on the utils functions you just added.
+### Finally, add three new flag arguments back in `main.js` based on the utils functions you just added.
 1. add a Boolean flag that makes a joke uppercase.
 2. add a Boolean flag that puts a joke in quotes.
 3. add an Integer flag that prints the joke `x` times.
+
+Now connect it all together!
 
 A working project would be able to run all those flags simultaneously, e.g. `node main --jokeType='oneliner' --quotes --uppercase --x=4` would print the one-liner joke 4 times in succession and each in quotes and uppercase.
 
