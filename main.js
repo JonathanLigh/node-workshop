@@ -1,11 +1,11 @@
-var joke = require('./jokeHandler');
+var jokes = require('./jokeHandler');
 var utils = require('./utils');
 var flags = require('flags');
 
 flags.defineString('jokeType').
     setDescription('Specifies the type of joke');
 
-flags.defineInteger('n').
+flags.defineInteger('x').
   setDescription('The number of times we want to print the joke').
   setDefault(1).
   setValidator(function(input) {
@@ -13,15 +13,27 @@ flags.defineInteger('n').
       throw Error('Integer must not be less than 1.');
     }
   });
+
+flags.defineBoolean('uppercase').
+  setDescription('Changes joke to uppercase.');
+
+flags.defineBoolean('quotes').
+  setDescription('Adds quotations to output.');
+
 flags.parse();
 
+var joke = '';
+
 if (flags.get('jokeType') === 'knockknock') {
-  console.log(utils.xTimes(joke.createKnockKnock,
-    flags.get('n')));
+  joke = jokes.createKnockKnock();
 } else if (flags.get('jokeType') === 'oneliner') {
-  console.log(utils.xTimes(joke.createOneLiner,
-    flags.get('n')));
+  joke = jokes.createOneLiner();
 } else {
-  console.log('incorrect input flags provided');
-  process.exit(0);
+  console.error('incorrect input flags provided');
+  process.exit(0); // This exits our JavaScript process immediately
 }
+
+if (flags.get('uppercase')) joke = utils.inCaps(joke);
+if (flags.get('quotes')) joke = utils.inQuotes(joke);
+
+utils.xTimes(joke, flags.get('x'));

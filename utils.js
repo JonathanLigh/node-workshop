@@ -1,36 +1,14 @@
-var flags = require('flags');
+module.exports.inCaps = function (string) {
+  return string.toUpperCase();
+}
 
-flags.defineBoolean('u').
-  setDescription('Changes joke to uppercase.');
+module.exports.inQuotes = function (string) {
+  return '"' + string + '"';
+}
 
-flags.defineBoolean('q').
-  setDescription('Adds quotations to output.');
-
-function inCaps (string) {
-  if (flags.get('u') === true){
-    return string.toUpperCase();
-  } else {
-    return string;
+module.exports.xTimes = function (joke, x) {
+  for (var i = 0; i < x; i++) {
+    console.log(joke);
   }
 }
 
-function inQuotes (string) {
-  if (flags.get('q') === true){
-    return '"' + string + '"';
-  } else {
-   return string;
-  }
-}
-
-module.exports = {
-  xTimes: function (jokeFunc, x) {
-    var jokes = '';
-    for (var i = 0; i < x; i++) {
-      jokes +=  inQuotes(inCaps(jokeFunc()));
-      if (i < x - 1) {
-        jokes += '\n';
-      }
-    }
-    return jokes;
-  }
-};
