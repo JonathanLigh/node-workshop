@@ -1,13 +1,27 @@
-var kkjoke = require('./kkjokeHandler');
-var oljoke = require('./onelinerjokehandler');
+var joke = require('./jokeHandler');
 var utils = require('./utils');
 var flags = require('flags');
 
+flags.defineString('jokeType').
+    setDescription('Specifies the type of joke');
 
-if (process.argv[2] === 'knockknock') {
-  console.log(kkjoke.create());
-} else if (process.argv[2] === 'oneliner') {
-  console.log(oljoke.create());
+flags.defineInteger('n').
+  setDescription('The number of times we want to print the joke').
+  setDefault(1).
+  setValidator(function(input) {
+    if (input <= 0) {
+      throw Error('Integer must not be less than 1.');
+    }
+  });
+flags.parse();
+
+if (flags.get('jokeType') === 'knockknock') {
+  console.log(utils.xTimes(joke.createKnockKnock,
+    flags.get('n')));
+} else if (flags.get('jokeType') === 'oneliner') {
+  console.log(utils.xTimes(joke.createOneLiner,
+    flags.get('n')));
 } else {
-  console.log('incorrect input provided');
+  console.log('incorrect input flags provided');
+  process.exit(0);
 }
